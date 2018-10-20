@@ -32,17 +32,14 @@
 		id: 'mapbox.streets'
 	}).addTo(mymap);
 
-	L.marker([51.5, -0.09]).addTo(mymap)
-		.bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();
-
 
 	var popup = L.popup();
 
 	function onMapClick(e) {
 		popup
 			.setLatLng(e.latlng)
-			.setContent("You clicked the map at " + e.latlng.toString())
-			.openOn(mymap);
+			L.marker(e.latlng).addTo(mymap)
+				.bindPopup("<button type='button' onclick='console.log(e.latlng.toString())'>IP-Adresse</button>").openPopup();
 	}
 
 	mymap.on('click', onMapClick);
